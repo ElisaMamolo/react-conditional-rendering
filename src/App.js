@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
+import logo from "./logo.svg";
+import "./App.css";
+import MovieList from "./components/MovieList";
+import { useState } from "react";
+import Spinner from "./components/Spinner";
+import ImprovedMovieList from "./components/ImprovedMovieList";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  // Declare a new state variable, which we'll call "isLoading"
+  const [isLoading, setIsLoading] = useState(false); // <-- add
+
+  if (isLoading) {
+    return <Spinner />;
+  } else {
+    return (
+      <div className="App">
+        {/* <MovieList /> */}
+        <ImprovedMovieList />;
+      </div>
+    );
+  }
 }
 
 export default App;
